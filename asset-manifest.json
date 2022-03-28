@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jtowe1/sprint-report-react/static/css/main.073c9b0a.css",
+    "main.js": "/jtowe1/sprint-report-react/static/js/main.2dfd34a4.js",
+    "static/js/787.cff39922.chunk.js": "/jtowe1/sprint-report-react/static/js/787.cff39922.chunk.js",
+    "index.html": "/jtowe1/sprint-report-react/index.html",
+    "main.073c9b0a.css.map": "/jtowe1/sprint-report-react/static/css/main.073c9b0a.css.map",
+    "main.2dfd34a4.js.map": "/jtowe1/sprint-report-react/static/js/main.2dfd34a4.js.map",
+    "787.cff39922.chunk.js.map": "/jtowe1/sprint-report-react/static/js/787.cff39922.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.2dfd34a4.js"
+  ]
+}
