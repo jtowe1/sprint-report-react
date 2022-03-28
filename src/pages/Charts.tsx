@@ -1,5 +1,5 @@
 import React from 'react';
-import { Line, LineChart, XAxis } from 'recharts';
+import { Area, AreaChart, LabelList, Legend, XAxis } from 'recharts';
 import { useSprint } from '../context/SprintContext';
 
 const Charts: React.FC = () => {
@@ -9,10 +9,16 @@ const Charts: React.FC = () => {
         <>
             <p>{sprint.name}</p>
             <p>Charts here</p>
-            <LineChart width={1400} height={400} data={sprint.days}>
+            <AreaChart width={1400} height={400} data={sprint.days}>
                 <XAxis dataKey="day" />
-                <Line type="monotone" dataKey="totalPointsRemaining" stroke="#8884d8" />
-            </LineChart>
+                <Legend verticalAlign="top" />
+                <Area name="Total Points Remaining" dataKey="totalPointsRemaining" stroke="blue" fill="#FFFFFF" >
+                    <LabelList dataKey="totalPointsRemaining" position="top" fill="blue"/>
+                </Area>
+                <Area name="Total Points Done" dataKey="totalPointsDone" fill="green" fillOpacity={0.2}>
+                <LabelList dataKey="totalPointsDone" position="top" fill="green"/>
+                </Area>
+            </AreaChart>
         </>
     );
 }
