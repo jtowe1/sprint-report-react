@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import './App.css';
-import { SprintProvider } from './context/SprintContext';
-import Charts from './pages/Charts';
 
 const App: React.FC = () => {
     return (
-        <SprintProvider>
-            <Charts />
-        </SprintProvider>
+        <>
+            <Link to="/">Home</Link>
+            <Link to="/charts">Charts</Link>
+            <Outlet />
+        </>
     );
 }
 
