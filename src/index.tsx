@@ -1,14 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Charts from './pages/Charts';
+import { SprintProvider } from './context/SprintContext';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const rootElement = document.getElementById('root');
+const ChartsWithProvider = (
+    <SprintProvider>
+        <Charts />
+    </SprintProvider>
+);
+
+render(
+    <BrowserRouter>
+        <React.StrictMode>
+            <Routes>
+                <Route path="/" element={<App />}>
+                    <Route path="/charts" element={ChartsWithProvider} />
+                </Route>
+            </Routes>
+        </React.StrictMode>
+    </BrowserRouter>,
+    rootElement
 );
 
 // If you want to start measuring performance in your app, pass a function
