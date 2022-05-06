@@ -12,7 +12,7 @@ interface LocationState {
     const navigate = useNavigate();
     const location = useLocation();
     const state = location.state as LocationState;
-    const auth = useAuth();
+    const { signin } = useAuth();
 
     const from = state?.from?.pathname || "/";
 
@@ -23,7 +23,7 @@ interface LocationState {
       const username = formData.get("email") as string;
       const password = formData.get("password") as string;
 
-      auth.signin(username, password, () => {
+      signin(username, password, () => {
         navigate(from, { replace: true });
       });
     }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useAuth } from "../context/AuthContext";
 
 const LogoutPage: React.FC = () => {
-    const {signout, email} = useAuth();
+    const { signout, email } = useAuth();
 
     useEffect(() => {
         if (email) {
