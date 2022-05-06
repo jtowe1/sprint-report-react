@@ -7,6 +7,7 @@ const App: React.FC = () => {
         <>
             <Link to="/">Home</Link>
             <Link to="/charts">Charts</Link>
+            <Link to="/logout">Logout</Link>
             <Outlet />
         </>
     );

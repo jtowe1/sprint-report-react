@@ -8,6 +8,7 @@ import Charts from './pages/Charts';
 import { SprintProvider } from './context/SprintContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import LoginPage from './pages/Login';
+import LogoutPage from './pages/Logout';
 
 const rootElement = document.getElementById('root');
 const ChartsWithProvider = () => (
@@ -19,13 +20,8 @@ const ChartsWithProvider = () => (
 function RequireAuth({ children }: { children: JSX.Element }) {
     const auth = useAuth();
     const location = useLocation();
-    console.log(auth);
 
     if (!auth.user) {
-      // Redirect them to the /login page, but save the current location they were
-      // trying to go to when they were redirected. This allows us to send them
-      // along to that page after they login, which is a nicer user experience
-      // than dropping them off on the home page.
       return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
@@ -47,6 +43,7 @@ render(
                             </RequireAuth>
                         }
                         />
+                        <Route path="/logout" element={<LogoutPage />} />
                     </Route>
                 </Routes>
             </React.StrictMode>
