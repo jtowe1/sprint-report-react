@@ -20,9 +20,10 @@ interface LocationState {
       event.preventDefault();
 
       const formData = new FormData(event.currentTarget);
-      const username = formData.get("username") as string;
+      const username = formData.get("email") as string;
+      const password = formData.get("password") as string;
 
-      auth.signin(username, () => {
+      auth.signin(username, password, () => {
         // Send them back to the page they tried to visit when they were
         // redirected to the login page. Use { replace: true } so we don't create
         // another entry in the history stack for the login page.  This means that
@@ -39,7 +40,10 @@ interface LocationState {
 
           <form onSubmit={handleSubmit}>
             <label>
-              Username: <input name="username" type="text" />
+              Email: <input name="email" type="text" />
+            </label>{" "}
+            <label>
+              Password: <input name="password" type="password" />
             </label>{" "}
             <button type="submit">Login</button>
           </form>
