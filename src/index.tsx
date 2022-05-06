@@ -18,10 +18,10 @@ const ChartsWithProvider = () => (
 );
 
 function RequireAuth({ children }: { children: JSX.Element }) {
-    const auth = useAuth();
+    const { email } = useAuth();
     const location = useLocation();
 
-    if (!auth.user) {
+    if (!email) {
       return <Navigate to="/login" state={{ from: location }} replace />;
     }
 

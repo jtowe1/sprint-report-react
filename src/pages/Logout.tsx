@@ -2,11 +2,16 @@ import React, { useEffect } from 'react'
 import { useAuth } from "../context/AuthContext";
 
 const LogoutPage: React.FC = () => {
-    const {signout, user} = useAuth();
+    const {signout, email} = useAuth();
 
     useEffect(() => {
-        signout(user);
-    },[signout, user]);
+        if (email) {
+            console.log('email set, calling signout');
+            signout(email);
+        } else {
+            console.log('got to logout with no email');
+        }
+    },[signout, email]);
 
     return (
         <div>

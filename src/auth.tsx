@@ -34,6 +34,7 @@ const fakeAuthProvider = {
             .then(function (response: any) {
                 console.log('login call success');
                 console.log(response);
+                callback();
             })
             .catch(function (error: any) {
                 console.log('login call fail');
@@ -57,8 +58,8 @@ const fakeAuthProvider = {
         })
         .then(function (response: any) {
             console.log('logout call success');
-            callback();
             console.log(response);
+            callback();
         })
         .catch(function (error: any) {
             console.log('logout call fail');
