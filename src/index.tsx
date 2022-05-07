@@ -3,27 +3,52 @@ import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Charts from './pages/Charts';
 import { SprintProvider } from './context/SprintContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import LoginPage from './pages/Login';
+import LogoutPage from './pages/Logout';
 
 const rootElement = document.getElementById('root');
-const ChartsWithProvider = (
+const ChartsWithProvider = () => (
     <SprintProvider>
         <Charts />
     </SprintProvider>
 );
 
+function RequireAuth({ children }: { children: JSX.Element }) {
+    const { email } = useAuth();
+    const location = useLocation();
+
+    if (!email) {
+      return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    return children;
+}
+
 render(
-    <BrowserRouter>
-        <React.StrictMode>
-            <Routes>
-                <Route path="/" element={<App />}>
-                    <Route path="/charts" element={ChartsWithProvider} />
-                </Route>
-            </Routes>
-        </React.StrictMode>
-    </BrowserRouter>,
+    <AuthProvider>
+        <BrowserRouter>
+            <React.StrictMode>
+                <Routes>
+                    <Route path="/" element={<App />}>
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route
+                        path="/charts"
+                        element={
+                            <RequireAuth>
+                                <ChartsWithProvider />
+                            </RequireAuth>
+                        }
+                        />
+                        <Route path="/logout" element={<LogoutPage />} />
+                    </Route>
+                </Routes>
+            </React.StrictMode>
+        </BrowserRouter>
+    </AuthProvider>,
     rootElement
 );
 

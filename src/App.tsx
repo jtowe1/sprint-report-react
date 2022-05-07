@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import './App.css';
+import Nav from './components/Nav';
 
 const App: React.FC = () => {
     return (
         <>
-            <Link to="/">Home</Link>
-            <Link to="/charts">Charts</Link>
+            <Nav />
             <Outlet />
         </>
     );
