@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Charts from './pages/Charts';
 import { SprintProvider } from './context/SprintContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -30,7 +30,7 @@ function RequireAuth({ children }: { children: JSX.Element }) {
 
 render(
     <AuthProvider>
-        <BrowserRouter>
+        <HashRouter>
             <React.StrictMode>
                 <Routes>
                     <Route path="/" element={<App />}>
@@ -47,7 +47,7 @@ render(
                     </Route>
                 </Routes>
             </React.StrictMode>
-        </BrowserRouter>
+        </HashRouter>
     </AuthProvider>,
     rootElement
 );
