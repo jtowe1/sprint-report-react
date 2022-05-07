@@ -1,8 +1,9 @@
 import { authProvider } from '../auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 interface AuthContextType {
     email: string|null;
+    error: string|null;
     signin: (email: string, password: string, callback: VoidFunction) => void;
     signout: (email: string) => void;
 }
@@ -10,7 +11,8 @@ interface AuthContextType {
 const AuthContext = React.createContext<AuthContextType>(null!);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    const [email, setEmail] = React.useState<string|null>(null);
+    const [ email, setEmail ] = React.useState<string|null>(null);
+    const [ error, setError ] = useState<string|null>(null);
 
     const signin = (email: string, password: string, callback: VoidFunction) => {
       return authProvider.signin(email, password, () => {
@@ -25,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         });
     };
 
-    const value = { email, signin, signout };
+    const value = { email, error, signin, signout };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

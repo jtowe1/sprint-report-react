@@ -12,7 +12,7 @@ interface LocationState {
     const navigate = useNavigate();
     const location = useLocation();
     const state = location.state as LocationState;
-    const { signin } = useAuth();
+    const { signin, error } = useAuth();
 
     const from = state?.from?.pathname || "/";
 
@@ -31,7 +31,7 @@ interface LocationState {
     return (
         <div>
           <p>You must log in to view the page at {from}</p>
-
+            <p>error: {error}</p>
           <form onSubmit={handleSubmit}>
             <label>
               Email: <input name="email" type="text" />

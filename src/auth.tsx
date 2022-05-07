@@ -27,7 +27,7 @@ const authProvider = {
             })
             .catch(function (error: any) {
                 console.log('login call fail');
-                console.log(error);
+                console.log(error.response.data.message);
             });
         });
     },
