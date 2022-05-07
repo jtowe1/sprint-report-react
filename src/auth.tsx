@@ -1,10 +1,5 @@
 import client from './client';
-
-function getCookie(name: string) {
-    var re = new RegExp(name + "=([^;]+)");
-    var value = re.exec(document.cookie);
-    return (value != null) ? unescape(value[1]) : null;
-}
+import Cookies from 'js-cookie';
 
 const fakeAuthProvider = {
     isAuthenticated: false,
@@ -16,7 +11,7 @@ const fakeAuthProvider = {
             let formData = new FormData();
             formData.append('email', email);
             formData.append('password', password);
-            const token = getCookie('XSRF-TOKEN') ?? '';
+            const token = Cookies.get('XSRF-TOKEN') ?? '';
 
             client.post('/login',
             formData,
@@ -39,7 +34,7 @@ const fakeAuthProvider = {
     signout(email: string, callback: VoidFunction) {
         const formData = new FormData();
         formData.append('email', email);
-        const token = getCookie('XSRF-TOKEN') ?? '';
+        const token = Cookies.get('XSRF-TOKEN') ?? '';
 
         client.post('/logout',
         formData,
