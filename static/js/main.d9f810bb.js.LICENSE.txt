@@ -152,6 +152,8 @@ object-assign
 
 /*! decimal.js-light v2.5.1 https://github.com/MikeMcl/decimal.js-light/LICENCE */
 
+/*! js-cookie v3.0.1 | MIT */
+
 /**
  * React Router DOM v6.3.0
  *
