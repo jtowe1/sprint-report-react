@@ -1,4 +1,4 @@
-import { fakeAuthProvider } from '../auth';
+import { authProvider } from '../auth';
 import React, { useContext } from 'react';
 
 interface AuthContextType {
@@ -13,14 +13,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [email, setEmail] = React.useState<string|null>(null);
 
     const signin = (email: string, password: string, callback: VoidFunction) => {
-      return fakeAuthProvider.signin(email, password, () => {
+      return authProvider.signin(email, password, () => {
         setEmail(email);
         callback();
       });
     };
 
     const signout = (email: string) => {
-        return fakeAuthProvider.signout(email, () => {
+        return authProvider.signout(email, () => {
             setEmail(null);
         });
     };

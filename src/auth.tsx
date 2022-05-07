@@ -1,7 +1,7 @@
 import client from './client';
 import Cookies from 'js-cookie';
 
-const fakeAuthProvider = {
+const authProvider = {
     isAuthenticated: false,
     signin(email: string, password: string, callback: VoidFunction) {
         client.get('/sanctum/csrf-cookie')
@@ -55,4 +55,4 @@ const fakeAuthProvider = {
     },
   };
 
-  export { fakeAuthProvider };
+  export { authProvider };
