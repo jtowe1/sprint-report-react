@@ -31,7 +31,7 @@ interface LocationState {
     return (
         <div>
           <p>You must log in to view the page at {from}</p>
-            <p>error: {error}</p>
+            <p>{error}</p>
           <form onSubmit={handleSubmit}>
             <label>
               Email: <input name="email" type="text" />

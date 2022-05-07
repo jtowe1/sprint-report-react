@@ -6,10 +6,7 @@ const LogoutPage: React.FC = () => {
 
     useEffect(() => {
         if (email) {
-            console.log('email set, calling signout');
             signout(email);
-        } else {
-            console.log('got to logout with no email');
         }
     },[signout, email]);
 

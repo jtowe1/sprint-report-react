@@ -5,9 +5,7 @@ import Cookies from 'js-cookie';
 const clientSignin = (email: string, password: string) => {
     return client.get('/sanctum/csrf-cookie')
     .then(function (response: any) {
-        console.log('token call success');
-        console.log(response);
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append('email', email);
         formData.append('password', password);
         const token = Cookies.get('XSRF-TOKEN') ?? '';
